@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Product Details - Qidong Laifeng Electric Tools Factory">产品详情 - 启东磊峰电动工具厂</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="../reobak/imgs/logo.jpg" alt="启东磊峰电动工具厂Logo" class="logo-img" data-en-alt="Qidong Laifeng Electric Tools Factory Logo">
+            <ul>
+                <li><a href="index.html" data-en="Home">首页</a></li>
+                <li><a href="products.html" data-en="Products">产品展示</a></li>
+                <li><a href="contact.html" data-en="Contact Us">联系我们</a></li>
+            </ul>
+            <div class="search">
+                <input type="text" placeholder="搜索产品..." data-en-placeholder="Search products...">
+                <button data-en="Search">搜索</button>
+            </div>
+            <div class="language-switch">
+                <button id="languageToggle" data-current-lang="zh">中文 / English</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="product-detail">
+        <a href="products.html" class="back-link" data-en="Back to Products">&larr; 返回产品列表</a>
+        <div class="product-images">
+            <img src="" alt="" class="main-image" data-en-alt="">
+            <div class="thumbnail-images">
+                <!-- 缩略图将通过 JavaScript 动态添加 -->
+            </div>
+        </div>
+        <div class="product-info">
+            <h1 id="productName" data-en="Product Name">产品名称</h1>
+            <p id="productId" class="product-id" data-en="Product ID: ">产品编号：</p>
+            <p id="productPrice" class="price">¥XX.XX</p>
+            <div class="product-description">
+                <h2 data-en="Product Description">产品描述</h2>
+                <p id="productDescription" data-en="This is a detailed description of the product, including its features, uses, materials, and other information.">这里是产品的详细描述，包括其特点、用途、材质等信息。</p>
+            </div>
+            <div class="product-specs">
+                <h2 data-en="Specifications">规格参数</h2>
+                <ul id="productSpecs">
+                    <!-- 规格参数将通过 JavaScript 动态添加 -->
+                </ul>
+            </div>
+            <button class="inquiry-btn" data-en="Inquire Now" onclick="showInquiryForm()">立即询价</button>
+        </div>
+    </main>
+
+    <footer>
+        <p data-en="&copy; 2024 Qidong Laifeng Electric Tools Factory. All rights reserved.">&copy; 2024 启东磊峰电动工具厂. 保留所有权利。</p>
+        <div class="social-links">
+            <!-- 添加社交媒体链接 -->
+        </div>
+        <a href="#" class="privacy-policy" data-en="Privacy Policy">隐私政策</a>
+        <a href="#" class="terms" data-en="Terms of Use">使用条款</a>
+        <a href="#" class="back-to-top" data-en="Back to Top">回到顶部</a>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // 获取产品ID并加载相应的产品信息
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        
+        // 这里应该是一个从服务器获取产品信息的函数
+        // 为了演示，我们使用一个模拟的产品数据
+        const productData = {
+            1: { 
+                name: "力扳王充电钻", 
+                id: "RB5116", 
+                price: "¥88.00", 
+                description: "力扳王充电钻是一款高性能的电动工具，适用于各种钻孔和螺丝紧固任务。它具大的扭矩和可调节的速度，使用起来既高效又灵活。采用先进的锂电池技术，充电快速，续航时间长。人体工程学设计的手柄提供舒适的握持感，减少长时间使用的疲劳。", 
+                specs: [
+                    "电池电压：16V",
+                    "电池容量：2.0Ah",
+                    "无负载转速：0-550/0-2000r/min",
+                    "最大扭力：60N.m"
+                ]
+            },
+            2: { 
+                name: "力扳王电动扳手", 
+                id: "RB5118", 
+                price: "¥98.00", 
+                description: "力扳王电动扳手是您工作中的得力助手，专为快速、高效的螺栓拆装而设计。采用高扭矩无刷电机，可轻松应对各种紧固任务。四档扭矩调节功能让您精准控制输出力度，避免过度紧固或损坏螺栓。紧凑的机身设计和轻量化材料使其适用于狭小空间作业。", 
+                specs: [
+                    "电池电压：21V MAX",
+                    "电池容量：2.0/4.0Ah",
+                    "无负载转速：0-550/0-2000r/min",
+                    "最大扭力：60N.m"
+                ]
+            },
+            3: { 
+                name: "力扳王螺丝批", 
+                id: "RB5850", 
+                price: "¥105.00", 
+                description: "力扳王螺丝批是一款精巧而强大的电动工具，为精细作业提供完美解决方案。采用高精度无刷电机，提供稳定的扭矩输出和精准的速度控制。超薄机身设计让您轻松进入狭小空间。六档扭矩调节满足不同材料和螺丝尺寸的需求。", 
+                specs: [
+                    "电池电压：16V",
+                    "电池容量：2.0Ah",
+                    "无负载转速：0-3300r/min",
+                    "最大扭力：260N.m"
+                ]
+            },
+            4: { 
+                name: "力扳王电动扳手", 
+                id: "RB5380", 
+                price: "¥180.00", 
+                description: "力扳王电动扳手RB5380是一款专业级的高扭矩工具，适用于重型工业和汽车维修领域。采用创新的冲击机构设计，提供超强的瞬时扭矩，轻松应对顽固螺栓。配备智能控制系统，可根据不同材料自动调整输出功率。", 
+                specs: [
+                    "电池电压：21V MAX",
+                    "电池容量：4.0/6.0Ah",
+                    "无负载转速：0-2300r/min",
+                    "最大扭力：500N.m"
+                ]
+            },
+            5: { 
+                name: "力扳王电动扳手", 
+                id: "RB5760", 
+                price: "¥286.00", 
+                description: "力扳王电动扳手RB5760是一款多功能的紧固工具，适用于各种专业施工和DIY项目。采用创新的双速变速箱设计，可在高速和高扭矩模式之间快速切换。配备电子制动系统，确保精确控制和安全操作。", 
+                specs: [
+                    "电池电压：21V MAX",
+                    "电池容量：4.0/6.0Ah",
+                    "无负载转速：0-2300r/min",
+                    "最大扭力：850N.m"
+                ]
+            },
+            6: { 
+                name: "力扳王电动扳手", 
+                id: "RB5790", 
+                price: "¥680.00", 
+                description: "力扳王电动扳手RB5790是一款高端专业级工具，专为重型工业应用而设计。采用先进的无刷电机技术，提供持续的高扭矩输出和卓越的能效比。智能扭矩控制系统可精确设置和监控扭矩输出，确保紧固精度。", 
+                specs: [
+                    "电池电压：21V MAX",
+                    "电池容量：4.0/6.0Ah",
+                    "无负载转速：0-3200r/min",
+                    "最大扭力：1500N.m"
+                ]
+            },
+            7: { 
+                name: "力扳王角磨机", 
+                id: "RB2920", 
+                price: "¥158.00", 
+                description: "力扳王角磨机RB2920是一款多用途的切割和打磨工具，适用于金属、石材和混凝土等多种材料。采用高功率无刷电机，提供强劲的切割和打磨性能。创新的散热设计确保长时间连续工作不过热。", 
+                specs: [
+                    "电池电压：21V MAX",
+                    "电池容量：4.0/6.0Ah",
+                    "无负载转速：10000r/min",
+                    "砂轮尺寸：100mm"
+                ]
+            },
+            8: { 
+                name: "力扳王切割机", 
+                id: "RB6115", 
+                price: "¥228.00", 
+                description: "力扳王切割机RB6115是一款高效精准的切割工具，适用于各种建筑和装修工程。采用高转速电机，提供快速、平滑的切割体验。激光导向系统确保切割线路精确无误。深度调节功能让您轻松控制切割深度。", 
+                specs: [
+                    "电池电压：21V MAX",
+                    "电池容量：4.0/6.0Ah",
+                    "无负载转速：0-6500r/min",
+                    "切割片直径：140mm"
+                ]
+            },
+            9: { 
+                name: "力扳王电锯", 
+                id: "RB1216", 
+                price: "¥248.00 - ¥268.00", 
+                description: "力扳王电锯RB1216是木工和建筑施工的理想选择，提供快速、精准的切割体验。高性能无刷电机提供强劲动力，轻松应对各种硬木和复合材料。创新的摆动切割技术提高切割效率，同时减少电池消耗。", 
+                specs: [
+                    "电池电压：20V",
+                    "电池容量：4.0/6.0Ah",
+                    "无负载转速：3600r/min",
+                    "导板长度：12\"/16\"",
+                    "链环数：45"
+                ]
+            },
+            10: { 
+                name: "力扳王电锤", 
+                id: "RB2610", 
+                price: "¥248.00", 
+                description: "力扳王电锤RB2610是一款多功能的重型电动工具，专为混凝土钻孔和凿削工作设计。采用高效无刷电机和创新的冲击机构，提供强大的冲击力和钻孔效率。三种工作模式（钻孔、锤钻、凿削）满足不同施工需求。", 
+                specs: [
+                    "电池电压：24V",
+                    "电池容量：4.0/6.0Ah",
+                    "无负载转速：850r/min",
+                    "冲击频率：0-5900/min",
+                    "最大钻孔直径：26mm（混凝土）"
+                ]
+            }
+        };
+
+        function loadProductDetails(id) {
+            const product = productData[id];
+            if (product) {
+                document.querySelector('.main-image').src = `../reobak/产品/${id}.png`;
+                document.querySelector('.main-image').alt = product.name;
+                document.querySelector('.main-image').dataset.enAlt = `Reobak ${product.name.replace('力扳王', '')}`;
+                document.getElementById('productName').textContent = product.name;
+                document.getElementById('productName').dataset.en = `Reobak ${product.name.replace('力扳王', '')}`;
+                document.getElementById('productId').textContent = `产品编号：${product.id}`;
+                document.getElementById('productId').dataset.en = `Product ID: ${product.id}`;
+                document.getElementById('productPrice').textContent = product.price;
+                document.getElementById('productDescription').textContent = product.description;
+                document.getElementById('productDescription').dataset.en = `Detailed description of ${product.name}...`;
+                
+                const specsList = document.getElementById('productSpecs');
+                specsList.innerHTML = '';
+                product.specs.forEach(spec => {
+                    const li = document.createElement('li');
+                    li.textContent = spec;
+                    li.dataset.en = spec; // 假设规格已经是双语的
+                    specsList.appendChild(li);
+                });
+            }
+        }
+
+        loadProductDetails(productId);
+
+        function showInquiryForm() {
+            // 这里添加询价表单的逻辑
+            alert('询价功能正在开发中...');
+        }
+    </script>
+</body>
+</html>
